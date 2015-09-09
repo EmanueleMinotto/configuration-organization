@@ -204,6 +204,48 @@ fos_user:
 					<p>environment-based configuration</p>
 				</section>
 
+        <section>
+          <p>Creating a bundle? Parameters are great, use them!</p>
+        </section>
+        <section>
+          <pre><code data-trim class="nohighlight">
+# common/doctrine_cache.yml
+doctrine_cache:
+  providers:
+    foo:
+      memcached:
+        servers:
+          memcached01.ss: 11211
+    bar:
+      memcached:
+        servers:
+          memcached01.ss: 11211
+    test:
+      memcached:
+        servers:
+          memcached01.ss: 11211
+          </code></pre>
+          <small>common solution</small>
+        </section>
+        <section>
+          <pre><code data-trim class="nohighlight">
+# common/doctrine_cache.yml
+doctrine_cache:
+  providers:
+    foo:
+      type: memcached
+    bar:
+      type: memcached
+    test:
+      type: memcached
+
+# parameters.yml
+parameters:
+  doctrine_cache.memcache.host: memcached01.ss
+          </code></pre>
+          <small>best solution</small>
+        </section>
+
 				<section>
 					<h2>Naming Strategies</h2>
 					<img src="img/permanence.png" style="max-width: 600px">
@@ -233,48 +275,6 @@ fos_user:
 							<code>VendorBundle\Package</code> => <code>vendor.package</code>
 						</li>
 					</ul>
-				</section>
-
-				<section>
-					<p>Creating a bundle? Parameters are great, use them!</p>
-				</section>
-				<section>
-					<pre><code data-trim class="nohighlight">
-# common/doctrine_cache.yml
-doctrine_cache:
-  providers:
-    foo:
-      memcached:
-        servers:
-          memcached01.ss: 11211
-    bar:
-      memcached:
-        servers:
-          memcached01.ss: 11211
-    test:
-      memcached:
-        servers:
-          memcached01.ss: 11211
-					</code></pre>
-					<small>common solution</small>
-				</section>
-				<section>
-					<pre><code data-trim class="nohighlight">
-# common/doctrine_cache.yml
-doctrine_cache:
-  providers:
-    foo:
-      type: memcached
-    bar:
-      type: memcached
-    test:
-      type: memcached
-
-# parameters.yml
-parameters:
-  doctrine_cache.memcache.host: memcached01.ss
-					</code></pre>
-					<small>best solution</small>
 				</section>
 
 				<section>
