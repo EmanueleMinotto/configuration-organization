@@ -44,65 +44,6 @@
 				<section>
 					<p>Be ready for changes</p>
 				</section>
-				<section>
-					<h2>Importers</h2>
-					<pre><code data-trim class="php">
-// app/config/common/imports.php
-
-foreach (glob(__DIR__.'/*.yml') as $file) {
-    $loader->import($file);
-}
-					</code></pre>
-				</section>
-				<section>
-					<pre><code data-trim class="nohighlight">
-# app/config/config.yml
-
-imports:
-- resource: parameters.yml
-- resource: security.yml
-- resource: services.yml
-- resource: common/imports.php
-					</code></pre>
-					instead of
-					<pre><code data-trim class="nohighlight">
-# app/config/config.yml
-
-imports:
-- resource: parameters.yml
-- resource: security.yml
-- resource: services.yml
-- resource: common/fos_elastica.yml
-- resource: common/fos_rest.yml
-- resource: common/fos_user.yml
-- resource: common/jms_serializer.yml
-# - resource: common/...
-# - resource: common/...
-# - resource: common/...
-# - resource: common/...
-# - resource: common/...
-					</code></pre>
-				</section>
-				<section>
-					using the <code>vendor/bundle</code> pattern
-					<pre><code data-trim class="php">
-// app/config/common/imports.php
-
-foreach (glob(__DIR__.'/*/*.yml') as $file) {
-    $loader->import($file);
-}
-					</code></pre>
-					<pre><code data-trim class="nohighlight">
-app/config/
-           common/
-                  imports.php
-                  fos/
-                      user.yml
-                      rest.yml
-                  jms/
-                      serializer.yml
-					</code></pre>
-				</section>
 
 				<section>
 					<h2>Default values</h2>
